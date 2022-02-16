@@ -55,10 +55,6 @@ namespace MMB_ASPNET.Models
 
         public void DeletePlayer(Player player)
         {
-            _conn.Execute("DELETE FROM matchlog WHERE Winner = @Id",
-                new { player.Id });
-            _conn.Execute("DELETE FROM matchlog WHERE Loser = @Id",
-                new { player.Id });
             _conn.Execute("DELETE FROM players WHERE id = @Id;",
                 new { player.Id });
         }

@@ -13,12 +13,14 @@
     </tr>
     @foreach(var m in Model)
     {
+        var wName = m.WinnerName != null ? m.WinnerName : "{Deleted User}";
+        var lName = m.LoserName != null ? m.LoserName : "{Deleted User}";
         <tr>
-         <td>@m.WinnerName</td>
-         <td>@m.WMmrChange</td>
-         <td>@m.LoserName</td>
-         <td>@m.LMmrChange</td>
-         <td>@m.Date</td>
-     </tr>
+            <td>@wName</td>
+            <td>@m.WMmrChange</td>
+            <td>@lName</td>
+            <td>@m.LMmrChange</td>
+            <td>@m.Date</td>
+         </tr>
     }
 </table>
