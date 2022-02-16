@@ -9,7 +9,7 @@
 
     <label asp-for="Name" class="control-label">Name</label>
 
-    <input type="text" id="input" name="Name" class="form-control" value="@Model.Name" 
+    <input type="text" id="input" name="Name" class="form-control" value="@Model.Name"  autocomplete="off"
     pattern="([a-zA-Z0-9]+\s?)*$" minlength="1" maxlength="15"  title="Name can only include: a-z A-Z 0-9 and single spaces. ex: l33Tname M4ster."
     onchange="this.value = this.value.trim()"/>
     
@@ -30,14 +30,6 @@
     let btn = document.getElementById("button");
 
     input.addEventListener("input", function(){
-        let flag = true;
-        let check = ["!","#","$","%","^","&","*","(",")","+","=","-",",",".","<","'","\"",">","?","/","\\","|","{","}",":",";","  "]
-        for(i=0; i<check.length; i++){
-            if (this.value.includes(check[i])){
-                flag = false;
-                break;
-            }
-        }
-        btn.disabled = (this.value === '' || flag === false);
+        btn.disabled = (this.value === '');
     })
  </script>
