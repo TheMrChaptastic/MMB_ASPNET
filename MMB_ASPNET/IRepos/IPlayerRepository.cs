@@ -11,5 +11,6 @@ namespace MMB_ASPNET.Models
         public void InsertPlayer(Player playerInsert);
         public void DeletePlayer(Player player);
         public void PlayerMatch(Player w, Player l);
+        public bool PlayerNamesCheck(Player player);
     }
 }

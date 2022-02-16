@@ -6,13 +6,11 @@ namespace MMB_ASPNET.Controllers
     public class PlayerController : Controller
     {
         private readonly IPlayerRepository repo;
-
         public PlayerController(IPlayerRepository repo)
         {
             this.repo = repo;
         }
 
-        // GET: /<controller>/
         public IActionResult Index()
         {
             var players = repo.GetAllPlayers();

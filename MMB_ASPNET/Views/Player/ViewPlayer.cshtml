@@ -27,6 +27,6 @@
     @using (Html.BeginForm("DeletePlayer", "Player", "Post"))
     {
         <input type="hidden" asp-for="Id" value="@Model.Id" />
-        <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this Player?" />
+        <input type="submit" onclick="return confirm('☠Are you sure?☠')" value="☠Delete this Player?☠" class="btn-danger"/>
     }
 </div>

@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 
 namespace MMB_ASPNET.Models
 {
@@ -20,7 +21,10 @@ namespace MMB_ASPNET.Models
 
         public void UpdatePlayerName(Player player)
         {
-            _conn.Execute("UPDATE players SET name = @name WHERE id = @Id", new { name = player.Name, player.Id });
+            if (PlayerNamesCheck(player))
+            {
+                _conn.Execute("UPDATE players SET name = @name WHERE id = @Id", new { name = player.Name, player.Id });
+            }        
         }
 
         public void UpdatePlayerStats(Player player)
@@ -31,12 +35,30 @@ namespace MMB_ASPNET.Models
 
         public void InsertPlayer(Player playerInsert)
         {
-            _conn.Execute("INSERT INTO players (Name, Mmr, wins, Losses) VALUES (@name, 1600, 0, 0);",
-                new { name = playerInsert.Name });
+            if (PlayerNamesCheck(playerInsert))
+            {
+                _conn.Execute("INSERT INTO players (Name, Mmr, wins, Losses) VALUES (@name, 1600, 0, 0);",
+                    new { name = playerInsert.Name });
+            }
+        }
+
+        public bool PlayerNamesCheck(Player player)
+        {
+            var pList = _conn.Query<Player>("SELECT * FROM players;");
+
+            if (pList.Where(x => x.Name == player.Name).Count() > 0)
+            {
+                return false;
+            }
+            return true;
         }
 
         public void DeletePlayer(Player player)
         {
+            _conn.Execute("DELETE FROM matchlog WHERE Winner = @Id",
+                new { player.Id });
+            _conn.Execute("DELETE FROM matchlog WHERE Loser = @Id",
+                new { player.Id });
             _conn.Execute("DELETE FROM players WHERE id = @Id;",
                 new { player.Id });
         }
