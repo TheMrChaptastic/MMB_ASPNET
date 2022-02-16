@@ -1,0 +1,30 @@
+﻿@using MMB_ASPNET.Models
+@model IEnumerable<Player>
+
+<h2>Player Leaderboards</h2>
+
+<div style="display: block">
+    <a href="/Player/InsertPlayer/">Create a New Player</a>
+</div>
+
+<table class="table">
+    <tr>
+        <th>Position</th>
+        <th>Name</th>
+        <th>MMR</th>
+        <th>Wins</th>
+        <th>Losses</th>
+    </tr>
+    @{ var pos = 1; }
+    @foreach(var p in Model)
+    {
+        <tr>
+         <td>@pos</td>
+         <td><a href=/Player/ViewPlayer/@p.Id>@p.Name</a></td>
+         <td>@p.Mmr</td>
+         <td>@p.Wins</td>
+         <td>@p.Losses</td>
+     </tr>
+     { pos++; }
+    }
+</table>

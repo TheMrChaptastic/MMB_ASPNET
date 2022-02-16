@@ -1,0 +1,24 @@
+﻿@using MMB_ASPNET.Models
+@model IEnumerable<Match>
+
+<h2>Match History</h2>
+
+<table class="table">
+    <tr>
+        <th>Winner</th>
+        <th>MMR Change</th>
+        <th>Loser</th>
+        <th>MMR Change</th>
+        <th>Date</th>
+    </tr>
+    @foreach(var m in Model)
+    {
+        <tr>
+         <td>@m.WinnerName</td>
+         <td>@m.WMmrChange</td>
+         <td>@m.LoserName</td>
+         <td>@m.LMmrChange</td>
+         <td>@m.Date</td>
+     </tr>
+    }
+</table>

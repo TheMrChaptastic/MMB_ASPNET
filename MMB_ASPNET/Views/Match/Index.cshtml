@@ -1,0 +1,62 @@
+﻿@using MMB_ASPNET.Models
+@model IEnumerable<Player>
+
+<h2 align="center">Input Match Results</h2>
+<hr/>
+
+<article class="form-group">
+    @using (Html.BeginForm("NewMatch", "Match", "Post")){
+    <div>
+        <section class="aside-left">
+            <label for="">Select Winner</label>
+            <select class="form-control" id="wId" name="wId" value="" onclick="changeSelect()">
+                @foreach (var p in Model)
+                {
+                    <option class="dropdown-item" value="@p.Id">@p.Name</option>
+                }
+            </select>
+        </section>
+        <aside class="aside-right"> 
+            <label for="">Select Loser</label>
+            <select class="form-control" id="lId" name="lId" value="" onclick="changeSelect()">
+                @foreach (var p in Model)
+                {
+                    <option class="dropdown-item" value="@p.Id">@p.Name</option>
+                }
+            </select>
+        </aside>
+    </div>
+    <div align="center">
+        <br>
+        <h1>VS</h1>
+        <input type="submit" id="subBtn" name="submit" value="Submit" class="btn btn-primary" disabled/>
+    </div>
+    } 
+</article>
+
+
+<script>
+    function changeSelect() {
+        let w = document.getElementById("wId").value;
+        let l = document.getElementById("lId").value;
+
+        if(w === l){
+            disableBtn();
+        }
+        else{
+            enableBtn();
+        }
+    }
+
+    function disableBtn() {
+        document.getElementById("subBtn").disabled = true;
+    }
+
+    function enableBtn() {
+        document.getElementById("subBtn").disabled = false;
+    }
+
+</script>
+    
+
+

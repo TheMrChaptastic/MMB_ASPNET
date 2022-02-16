@@ -1,0 +1,24 @@
+﻿@using MMB_ASPNET.Models
+@model Player
+
+<h2>Update @Model.Name</h2>
+
+@using (Html.BeginForm("UpdatePlayerToDatabase", "Player", "Post"))
+{
+    <input asp-for="Id" type="hidden" value="@Model.Id" />
+
+    <label asp-for="Name" class="control-label">Name</label>
+
+    <input type="text" name="Name" class="form-control" value="@Model.Name" />
+
+    <input asp-for="Mmr" type="hidden" value="@Model.Mmr" />
+
+    <input asp-for="Wins" type="hidden" value="@Model.Wins" />
+
+    <input asp-for="Losses" type="hidden" value="@Model.Losses" />
+
+    <br>
+
+    <input type="submit" value="Update Player" class="btn btn-primary" />
+
+}

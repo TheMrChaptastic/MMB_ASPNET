@@ -1,0 +1,10 @@
+﻿@using MMB_ASPNET.Models
+@model Player
+<h2>Create a New Product</h2>
+@using (Html.BeginForm("InsertPlayerToDatabase", "Player", "Post"))
+{
+    <label asp-for="Name" class="control-label">Name</label>
+    <input type="text" name="Name" class="form-control" value="" />
+    <br>
+    <input type="submit" value="Create Player" class="btn btn-primary" />
+}
