@@ -4,7 +4,9 @@
 @using (Html.BeginForm("InsertPlayerToDatabase", "Player", "Post"))
 {
     <label asp-for="Name" class="control-label">Name</label>
-    <input type="text" id="input" name="Name" class="form-control" value="" onchange="this.value = this.value.trim()"/>
+    <input type="text" id="input" name="Name" class="form-control" value="" 
+    pattern="([a-zA-Z0-9]+\s?)*$" minlength="1" maxlength="15" title="Name can only include: a-z A-Z 0-9 and single spaces. ex: l33Tname M4ster."
+    onchange="this.value = this.value.trim()"/>
     <br>
     <input type="submit" id="button" value="Create Player" class="btn btn-primary" disabled/>
 }
@@ -21,6 +23,6 @@
                 break;
             }
         }
-        btn.disabled = (this.value === '' || flag === false || this.value.length > 15);
+        btn.disabled = (this.value === '' || flag === false);
     })
  </script>
