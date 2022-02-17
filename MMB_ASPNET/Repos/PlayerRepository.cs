@@ -37,7 +37,7 @@ namespace MMB_ASPNET.Models
         {
             if (PlayerNamesCheck(playerInsert))
             {
-                _conn.Execute("INSERT INTO players (Name, Mmr, wins, Losses) VALUES (@name, 1600, 0, 0);",
+                _conn.Execute("INSERT INTO players (Name) VALUES (@name);",
                     new { name = playerInsert.Name });
             }
         }
