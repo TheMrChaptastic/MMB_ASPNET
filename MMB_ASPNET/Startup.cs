@@ -28,7 +28,7 @@ namespace MMB_ASPNET
         {
             services.AddScoped<IDbConnection>((s) =>
             {
-                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("MyDbConnection"));
+                IDbConnection conn = new MySqlConnection(Configuration.GetConnectionString("azuremysql"));
                 conn.Open();
                 return conn;
             });

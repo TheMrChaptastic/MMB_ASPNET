@@ -13,9 +13,9 @@ namespace MMB_ASPNET.Models
             _conn = conn;
         }
         private readonly IDbConnection _conn;
-        public IEnumerable<Match> GetAllMatches() => _conn.Query<Match>("SELECT m.MId, m.Winner, w.Name AS WinnerName, m.WMmrChange, m.Loser, l.Name AS LoserName, m.LMmrChange, m.Date FROM mymomsbasement.matchlog AS m " +
-            "LEFT JOIN mymomsbasement.players AS w ON w.Id = m.Winner " +
-            "LEFT JOIN mymomsbasement.players AS l ON l.Id = m.Loser ORDER BY MId DESC;");
+        public IEnumerable<Match> GetAllMatches() => _conn.Query<Match>("SELECT m.MId, m.Winner, w.Name AS WinnerName, m.WMmrChange, m.Loser, l.Name AS LoserName, m.LMmrChange, m.Date FROM matchlog AS m " +
+            "LEFT JOIN players AS w ON w.Id = m.Winner " +
+            "LEFT JOIN players AS l ON l.Id = m.Loser ORDER BY MId DESC;");
 
         public void NewMatch(Player w, Player l)
         {
