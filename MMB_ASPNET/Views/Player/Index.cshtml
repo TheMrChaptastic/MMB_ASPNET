@@ -1,6 +1,10 @@
 ﻿@using MMB_ASPNET.Models
 @model IEnumerable<Player>
 
+@{
+    ViewData["Title"] = "Leaderboard";
+}
+
 <h2>Player Leaderboards</h2>
 
 <form style="margin-bottom:10px" action="/Player/InsertPlayer/">
