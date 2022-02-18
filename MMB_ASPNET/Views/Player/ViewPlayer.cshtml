@@ -1,6 +1,10 @@
 ﻿@using MMB_ASPNET.Models
 @model Player
 
+@{
+    ViewData["Title"] = @Model.Name;
+}
+
 <h3>Player "@Model.Name" Information</h3>
 
 <div style="display: block">

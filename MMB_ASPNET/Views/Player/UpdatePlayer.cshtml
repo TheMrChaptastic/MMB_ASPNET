@@ -1,6 +1,10 @@
 ﻿@using MMB_ASPNET.Models
 @model Player
 
+@{
+    ViewData["Title"] = "Update Player";
+}
+
 <h2>Update @Model.Name</h2>
 
 @using (Html.BeginForm("UpdatePlayerToDatabase", "Player", "Post"))
