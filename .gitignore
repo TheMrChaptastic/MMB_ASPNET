@@ -363,3 +363,4 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 /MMB_ASPNET/Properties/ServiceDependencies/elofinalproject - Web Deploy/profile.arm.json
+/MMB_ASPNET/Properties/ServiceDependencies/elofinalproject - Web Deploy1/profile.arm.json
