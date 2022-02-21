@@ -1,4 +1,6 @@
-﻿namespace MMB_ASPNET.Models
+﻿using System.Collections.Generic;
+
+namespace MMB_ASPNET.Models
 {
     public class Player
     {
@@ -8,6 +10,7 @@
         public int Wins { get; set; }
         public int Losses { get; set; }
         public bool Master { get; set; }
+        public IEnumerable<Match> Matches { get; set; }
 
     }
 }

@@ -13,6 +13,9 @@ namespace MMB_ASPNET.Models
         }
         private readonly IDbConnection _conn;
         public IEnumerable<Player> GetAllPlayers() => _conn.Query<Player>("SELECT * FROM players ORDER BY mmr DESC;");
+        public IEnumerable<Match> GetPlayersMatches(int pId) => _conn.Query<Match>("SELECT m.MId, m.Winner, w.Name AS WinnerName, m.WMmrChange, m.Loser, l.Name AS LoserName, m.LMmrChange, m.Date FROM matchlog AS m " +
+            "LEFT JOIN players AS w ON w.Id = m.Winner " +
+            $"LEFT JOIN players AS l ON l.Id = m.Loser WHERE m.Winner = {pId} OR m.Loser = {pId} ORDER BY MId DESC;");
 
         public Player GetPlayer(int id)
         {

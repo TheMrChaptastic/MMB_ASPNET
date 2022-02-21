@@ -20,6 +20,7 @@ namespace MMB_ASPNET.Controllers
         public IActionResult ViewPlayer(int id)
         {
             var player = repo.GetPlayer(id);
+            player.Matches = repo.GetPlayersMatches(id);
 
             return View(player);
         }

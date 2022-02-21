@@ -26,6 +26,30 @@
     </tr>
 </table>
 
+<h2>@Model.Name Match History</h2>
+
+<table class="table">
+    <tr>
+        <th>Winner</th>
+        <th>MMR Change</th>
+        <th>Loser</th>
+        <th>MMR Change</th>
+        <th>Date(UTC)</th>
+    </tr>
+    @foreach(var m in Model.Matches)
+    {
+        var wName = m.WinnerName != null ? m.WinnerName : "{Deleted User}";
+        var lName = m.LoserName != null ? m.LoserName : "{Deleted User}";
+        <tr>
+            <td>@wName</td>
+            <td>@m.WMmrChange</td>
+            <td>@lName</td>
+            <td>@m.LMmrChange</td>
+            <td>@m.Date</td>
+         </tr>
+    }
+</table>
+
 
 <div style="display: block">
     @using (Html.BeginForm("DeletePlayer", "Player", "Post"))
